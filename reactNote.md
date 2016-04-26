@@ -24,7 +24,7 @@
 
     babel src --out-dir build
 
-二、ReactDOM.render()
+##二、ReactDOM.render()##
 
  React.render是React的基本语法，用于将模版语言转换为html语言，并插入指定的DOM节点
 
@@ -32,3 +32,40 @@
       <h1>Hello, world!</h1>,
       document.getElementById('example')
       );
+
+## 三、this.props.children     
+
+
+      var NameTag=React.createClass({
+     render:function(){
+      return(<ol>{
+     React.Children.map(this.props.children,function(child){
+
+     return <li>{child}</li>
+     
+     
+     })
+
+     }
+     </ol>
+     );
+     }
+     });
+
+需要注意的是，children的值有三种可能：undefined,object,array,如果没有字节点,则为**undefined**,有一个子节点，则为**object**,大于1的时候为**array**
+
+React 提供一个工具方法 React.Children 来处理 this.props.children 。我们可以用 React.Children.map 来遍历子节点，而不用担心 this.props.children 的数据类型是 undefined 还是 object。更多的 React.Children 的方法，[请参考官方文档](https://facebook.github.io/react/docs/top-level-api.html#react.children)。
+
+
+## 四、PropTypes
+组件的属性可以接受任意值，字符串、对象、函数等等斗可以。有时，我们需要一种机制，验证别人使用组件时，提供的参数是否符合要求。
+组件类的PropTypes属性，就是用来验证组件实例的属性是否符合要求。
+    
+    var MyTitle = React.createClass({
+    propTypes: {
+    title: React.PropTypes.string.isRequired,
+    },
+    render: function() {
+     return <h1> {this.props.title} </h1>;
+    } 
+    });
