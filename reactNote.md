@@ -36,14 +36,12 @@
 ## 三、this.props.children     
 
 
-      var NameTag=React.createClass({
+     var NameTag=React.createClass({
      render:function(){
-      return(<ol>{
+     return(<ol>{
      React.Children.map(this.props.children,function(child){
 
      return <li>{child}</li>
-     
-     
      })
 
      }
@@ -69,3 +67,7 @@ React 提供一个工具方法 React.Children 来处理 this.props.children 。�
      return <h1> {this.props.title} </h1>;
     } 
     });
+    
+上面的Mytitle组件有一个title属性。PropTypes 告诉 React，这个 title 属性是必须的，而且它的值必须是字符串。现在，我们设置 title 属性的值是一个数值。  
+    
+   
